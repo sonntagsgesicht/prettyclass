@@ -367,7 +367,7 @@ def prettyclass(cls: Type = None, *, init: bool = True, repr: bool = True,
     >>> ABC(1, 2, [3, 4], c=5, d=1, e=7, g='A', h='B')
     ABC(1, 2, [3, 4], c=5, e=7, g='A', h='B')
 
-    """
+    """ # noqa E501
     def wrap(cls):
         return _process(cls, init, repr, copy, eq, nonzero, hash, json)
     # See if we're being called as @dataclass or @dataclass().
