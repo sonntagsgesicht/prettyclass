@@ -6,7 +6,8 @@
 API Documentation
 -----------------
 
+.. autofunction:: prettyclass
+
+
 .. toctree::
     :glob:
-
-    ./api/modules.rst

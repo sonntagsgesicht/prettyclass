@@ -11,11 +11,11 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from os import getcwd
-from os.path import basename, split
+import pydoc
+
 from regtest import RegressionTestCase
 
-pkg = __import__(basename(getcwd()))
+from prettyclass import prettyclass
 
 
 # first run will build reference values (stored in files)
@@ -24,10 +24,23 @@ pkg = __import__(basename(getcwd()))
 
 class FirstRegTests(RegressionTestCase):
 
-    def test_sample_almost_equal(self):
-        for i in range(-10, 100):
-            self.assertAlmostRegressiveEqual(pkg.Line(0, 1).y(x=0.5 * i))
+    compression = False
 
-    def test_sample_equal(self):
-        for i in range(-10, 100):
-            self.assertAlmostRegressiveEqual(0 < pkg.Line(0, 1).y(x=0.5 * i))
+    def setUp(self):
+        flags = {'init' : True, 'repr' : True, 'copy' : True, 'eq' : True,
+                 'nonzero' : True, 'hash' : True, 'json' : True}
+
+        @prettyclass(**flags)
+        class ABC:
+            def __init__(self, a, *b, c, d=4, e, **f):
+                ...
+
+        self.ABC = ABC
+
+    def test_instance_help(self):
+        h = pydoc.render_doc(self.ABC, "Help on %s")
+        self.assertRegressiveEqual(h)
+
+    def test_decorator_help(self):
+        h = pydoc.render_doc(prettyclass, "Help on %s")
+        self.assertRegressiveEqual(h)
