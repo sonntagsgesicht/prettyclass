@@ -22,7 +22,7 @@ __email__ = 'sonntagsgesicht@icloud.com'
 __url__ = 'https://github.com/sonntagsgesicht/prettyclass'
 
 __date__ = 'Monday, 07 October 2024'
-__version__ = '0.1'
+__version__ = '0.1.1'
 __dev_status__ = '4 - Beta'  # '5 - Production/Stable'
 
 __dependencies__ = ()
