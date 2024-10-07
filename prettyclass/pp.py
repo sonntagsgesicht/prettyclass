@@ -5,7 +5,7 @@
 # pretty classes - pretty easy.  (created by auxilium)
 #
 # Author:   sonntagsgesicht
-# Version:  0.1, copyright Saturday, 05 October 2024
+# Version:  0.1, copyright Monday, 07 October 2024
 # Website:  https://github.com/sonntagsgesicht/prettyclass
 # License:  Apache License 2.0 (see LICENSE file)
 
@@ -134,13 +134,13 @@ def _bound_arguments(self):
     var_p = [k for k, v in b.signature.parameters.items() if v.kind == 2]
     if 1 < len(var_p):
         raise RuntimeError('found more than one var positional argument')
-    var_p = kwargs.pop(var_p[0]) if var_p else ()
+    var_p = kwargs.pop(var_p[0], ()) if var_p else ()
     args += var_p
 
     var_kw = [k for k, v in b.signature.parameters.items() if v.kind == 4]
     if 1 < len(var_kw):
         raise RuntimeError('found more than one var keyword only argument')
-    var_kw = kwargs.pop(var_kw[0]) if var_kw else {}
+    var_kw = kwargs.pop(var_kw[0], {}) if var_kw else {}
     kwargs.update(var_kw)
 
     return args, kwargs
