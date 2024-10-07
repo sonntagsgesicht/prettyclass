@@ -106,7 +106,7 @@ Documentation
 -------------
 
 More documentation available at
-`http://prettyclass.readthedocs.io <http://prettyclass.readthedocs.io>`_
+`https://prettyclass.readthedocs.io <https://prettyclass.readthedocs.io>`_
 
 
 Install
